@@ -6,6 +6,7 @@ class Admin::TutorialsController < Admin::BaseController
   def create
     tutorial = Tutorial.create(create_tutorial_params)
     if tutorial.save
+      vids= YoutubeResults.new.create_videos(tutorial)
       flash[:notice] = "Successfully created tutorial. #{view_context.link_to("View it here.", tutorial_path(tutorial.id))}"
       redirect_to admin_dashboard_path
     end
