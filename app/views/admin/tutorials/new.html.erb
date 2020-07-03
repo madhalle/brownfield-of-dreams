@@ -9,6 +9,16 @@
 
   <h3>Videos</h3>
 
+  <div data-controller="tutorials">
+    <%= link_to "Import Youtube Playlist", "#", "data-action" => "click->tutorials#showVideoForm", class: "video-position-submit btn btn-outline", id: @tutorial.id %>
+  </div>
+
+  <div class="mt1" id="new-video-form">
+    <h3>Import Playlist</h3>
+    <%= f.label 'Playlist Id', class: "block" %>
+    <%= f.text_field :playlist_id, class: "field block"%>
+  </div>
+
   <%= f.fields_for :videos do |builder| %>
     <%= f.label :youtube_url %>
     <%= f.text_field :video_id, class: "block col-4 field" %>

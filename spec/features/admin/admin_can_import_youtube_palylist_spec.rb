@@ -17,5 +17,8 @@ describe "An admin can import a youtube playlist" do
 
     expect(current_path).to eq(admin_dashboard_path)
     expect(page).to have_content('Successfully created tutorial. View it here.')
+
+    click_link "View it here."
+    expect(current_path).to eq(tutorial_path(Tutorial.last.id))
   end
 end
