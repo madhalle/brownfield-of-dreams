@@ -45,13 +45,7 @@ describe 'A registered user' do
     within(".followers") do
       expect(page).to have_css(".follower", count: 4)
       expect(page).to_not have_content("jpc20")
-
     end
-    # save_and_open_page
-    # within(first(".follower")) do
-    #   click_link
-    #   expect(current_path).to not_eq(dashboard_path)
-    # end
   end
 
   it "can see all github followings" do
@@ -62,8 +56,6 @@ describe 'A registered user' do
     within(".followings") do
       expect(page).to have_css(".following", count: 5)
       expect(page).to have_content("jpc20")
-
     end
-
   end
 end

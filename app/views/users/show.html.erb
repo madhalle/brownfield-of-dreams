@@ -10,7 +10,7 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-
+<%= button_to "Connect to Github", "https://github.com/login/oauth/authorize", method: :get %>
   <% if current_user.token %>
     <section class="github">
       <h1>GitHub Repositories</h1>
