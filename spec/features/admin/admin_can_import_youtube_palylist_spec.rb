@@ -5,8 +5,7 @@ describe "An admin can import a youtube playlist" do
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     visit new_admin_tutorial_path
-    # y = YoutubeService.new.playlist_info('RDQMVYZqmir5xl0')
-    # require "pry"; binding.pry
+
     fill_in 'Title', with: "New Tutorial"
     fill_in 'Description', with: "New Tutorial Description"
     fill_in 'Thumbnail', with: "https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg"
