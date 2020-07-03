@@ -9,6 +9,6 @@ RSpec.describe "when visiting the site as a user" do
   it "can connect to github" do
     visit "/dashboard"
 
-    click_button "Connect to Github"
+    click_link "Connect to Github"
   end
 end

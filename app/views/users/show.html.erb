@@ -8,9 +8,11 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
-    <h1>Bookmarked Segments</h1>
+    <h1> Bookmarked Segments</h1>
   </section>
-<%= button_to "Connect to Github", "https://github.com/login/oauth/authorize", method: :get %>
+
+<%= link_to "Connect to Github", "https://github.com/login/oauth/authorize?client_id=#{ENV["GITHUB_CLIENT_ID"]}", method: :get %>
+
   <% if current_user.token %>
     <section class="github">
       <h1>GitHub Repositories</h1>
