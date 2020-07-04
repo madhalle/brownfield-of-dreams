@@ -7,6 +7,5 @@ class User < ApplicationRecord
   validates_presence_of :first_name
   enum role: { default: 0, admin: 1 }
   has_secure_password
-  # has_secure_password(validations: false)
 
 end
