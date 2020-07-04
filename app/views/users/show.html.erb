@@ -8,10 +8,9 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
-    <h1> Bookmarked Segments</h1>
+    <h1>Bookmarked Segments</h1>
   </section>
 
-<%= link_to "Connect to Github", "/auth/github", class: "btn btn-primary mb1 bg-teal" %>
 
   <% if current_user.token %>
     <section class="github">
@@ -37,5 +36,7 @@
         <% end %>
       </section>
     </section>
+  <% else %>
+    <%= link_to "Connect to Github", "/auth/github", class: "btn btn-primary mb1 bg-teal" %>
+  </section>
   <% end %>
-</section>
