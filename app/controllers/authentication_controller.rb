@@ -2,8 +2,8 @@ class AuthenticationController < ApplicationController
 
   def create
     auth = request.env['omniauth.auth']
-    current_user.token = auth['omniauth.auth']['credentials']['token']
-    current_user.save
+    current_user.update(token: auth['credentials']['token'])
+    require "pry"; binding.pry
     redirect_to dashboard_path
   end
 
