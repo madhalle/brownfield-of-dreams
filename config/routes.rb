@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
 
-  get '/auth/:provider/callback', to: 'authentication#create'
+  get '/auth/github/callback', to: 'authentication#create'
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
