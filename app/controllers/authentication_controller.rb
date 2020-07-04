@@ -7,4 +7,9 @@ class AuthenticationController < ApplicationController
     redirect_to dashboard_path
   end
 
+  # private
+  # def permitted_params
+  #   params.permit(:user => [:username, :email])
+  # end
+
 end
