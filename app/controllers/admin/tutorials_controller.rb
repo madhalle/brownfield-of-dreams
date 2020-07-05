@@ -13,7 +13,9 @@ class Admin::TutorialsController < Admin::BaseController
       flash[:notice] = "Successfully created tutorial."
       redirect_to tutorial_path(tutorial.id)
     else
-
+      flash[:error] = tutorial.errors.full_messages.to_sentence
+      @tutorial = Tutorial.new
+      render :new
     end
   end
 
