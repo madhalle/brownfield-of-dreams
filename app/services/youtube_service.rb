@@ -7,7 +7,18 @@ class YoutubeService
 
   def playlist_video_data(id)
     data = playlist_info(id)
-    video_data = data[:items].map do |video|
+    video_data = collect_video_data(data[:items])
+    while data[:nextPageToken]
+      data = playlist_info(id, data[:nextPageToken])
+      video_data += collect_video_data(data[:items])
+    end
+    video_data
+  end
+
+  private
+
+  def collect_video_data(video_data)
+    video_data.map do |video|
       {
         video_id: video[:id],
         title: video[:snippet][:title],
@@ -15,21 +26,7 @@ class YoutubeService
         description: video[:snippet][:description]
       }
     end
-    while data[:nextPageToken]
-      data = playlist_info(id, data[:nextPageToken])
-      video_data +=  data[:items].map do |video|
-        {
-          video_id: video[:id],
-          title: video[:snippet][:title],
-          thumbnail: video[:snippet][:thumbnails][:high][:url],
-          description: video[:snippet][:description]
-        }
-      end
-    end
-    video_data
   end
-
-  private
 
   def playlist_info(id, nextPageToken=nil)
     params = { part: 'snippet,contentDetails', playlistId: id, maxResults: 100, pageToken: nextPageToken }
