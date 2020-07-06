@@ -4,4 +4,8 @@ class Follower
     @login = follower_data[:login]
     @link = follower_data[:html_url]
   end
+
+  def has_account?
+    User.where('github_username = ?', login).exists?
+  end
 end

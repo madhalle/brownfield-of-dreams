@@ -25,7 +25,9 @@
       <h2>Followers</h2>
       <section class="followers">
         <% @followers.each do |follower| %>
-          <p class="follower"> <%= link_to follower.login, follower.link %></p>
+          <p class="follower" id="follower-<%= follower.login %>">
+            <%= link_to follower.login, follower.link %> <%= link_to "Add Friend" if follower.has_account? %>
+          </p>
         <% end %>
       </section>
 

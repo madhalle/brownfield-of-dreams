@@ -9,24 +9,27 @@ require 'rails_helper'
 
 RSpec.describe "When visiting the user dashboard" do
   before :each do
-    @user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
-    # @user1 = create(:user, token: ENV['GITHUB_TOKEN'])
-    # @user2 = create(:user, token: ENV['GITHUB_TOKEN_2'])
+    @user1 = create(:user, token: ENV['GITHUB_TOKEN'], github_username: 'jpc20')
+    @user2 = create(:user, token: ENV['GITHUB_TOKEN_2'], github_username: 'madhalle')
   end
 
   it "users have Github usernames" do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit "/dashboard"
     click_link "Connect to Github"
 
     expect(current_path).to eq dashboard_path
     expect(page).to have_css('.github')
     expect(page).to_not have_link('Connect to Github')
-    expect(@user.github_username).to eq('jpc20')
+    expect(user.github_username).to eq('jpc20')
   end
 
-  xit "Users see a link to add friend next to followers with an account" do
+  it "Users see a link to add friend next to followers with an account" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
-
+    visit "/dashboard"
+    within "#follower-#{@user2.github_username}" do
+      click_link "Add Friend"
+    end
   end
 end
