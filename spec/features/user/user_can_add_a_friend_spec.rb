@@ -46,4 +46,18 @@ RSpec.describe "When visiting the user dashboard" do
       click_link "Add Friend"
     end
   end
+
+  it "shows all of the users friends" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user2)
+    visit "/dashboard"
+    within '.friends' do
+      expect(page).to_not have_content(@user1.github_username)
+    end
+    within "#following-#{@user1.github_username}" do
+      click_link "Add Friend"
+    end
+    within '.friends' do
+      expect(page).to have_content(@user1.github_username)
+    end
+  end
 end

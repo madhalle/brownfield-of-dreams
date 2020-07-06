@@ -31,13 +31,22 @@
         <% end %>
       </section>
 
-      <h3>Followings</h3>
+      <h2>Followings</h2>
       <section class="followings">
         <% @followings.each do |following| %>
           <p class="following" id="following-<%= following.login %>">
             <%= link_to following.login, following.link %> <%= link_to "Add Friend" if following.has_account? %>
           </p>
         <% end %>
+      </section>
+
+      <section class="friends">
+        <h2>Friends</h2>
+        <ul>
+          <% current_user.friends.each do |friend| %>
+            <li><%= friend.github_username %></li>
+          <% end %>
+        </ul>
       </section>
     </section>
   <% else %>
