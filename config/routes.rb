@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
 
+  post '/friendships/:friend_id', to: 'friendship#create'
+
   get '/auth/github/callback', to: 'authentication#create'
 
   namespace :admin do

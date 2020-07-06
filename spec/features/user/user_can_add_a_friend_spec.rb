@@ -56,6 +56,7 @@ RSpec.describe "When visiting the user dashboard" do
     within "#following-#{@user1.github_username}" do
       click_link "Add Friend"
     end
+    expect(page).to have_content('Friend Added')
     within '.friends' do
       expect(page).to have_content(@user1.github_username)
     end
