@@ -28,7 +28,21 @@ RSpec.describe "When visiting the user dashboard" do
   it "Users see a link to add friend next to followers with an account" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
     visit "/dashboard"
+    within "#follower-Mycobee" do
+      expect(page).to_not have_content('Add Friend')
+    end
     within "#follower-#{@user2.github_username}" do
+      click_link "Add Friend"
+    end
+  end
+
+  it "Users see a link to add friend next to followings with an account" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user2)
+    visit "/dashboard"
+    within "#follower-perryr16" do
+      expect(page).to_not have_content('Add Friend')
+    end
+    within "#following-#{@user1.github_username}" do
       click_link "Add Friend"
     end
   end
