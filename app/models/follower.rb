@@ -8,4 +8,8 @@ class Follower
   def has_account?
     User.where('github_username = ?', login).exists?
   end
+
+  def user_id
+    User.where('github_username = ?', login).pluck(:id).first
+  end
 end

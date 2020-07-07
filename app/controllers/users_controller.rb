@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @repos = GithubResults.new.repos(current_user.token) if current_user.token
     @followers = GithubResults.new.followers(current_user.token) if current_user.token
     @followings = GithubResults.new.followings(current_user.token) if current_user.token
+    @friends = current_user.friendships.map { |friendship| friendship.friend.github_username }
   end
 
   def new
