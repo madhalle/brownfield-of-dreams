@@ -14,3 +14,4 @@ class GithubResults
     json.map { |following_data| Following.new(following_data) }
   end
 end
+#refactor githubservice calls, instance variable

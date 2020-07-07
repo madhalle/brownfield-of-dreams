@@ -37,7 +37,7 @@ describe 'A registered user' do
     end
   end
 
-  it "can see all github followers " do
+  xit "can see all github followers " do
     user_2 = create(:user, token: ENV["GITHUB_TOKEN_2"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
     visit(dashboard_path)
@@ -48,7 +48,7 @@ describe 'A registered user' do
     end
   end
 
-  it "can see all github followings" do
+  xit "can see all github followings" do
     user_2 = create(:user, token: ENV["GITHUB_TOKEN_2"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
     visit(dashboard_path)
