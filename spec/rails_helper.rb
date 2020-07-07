@@ -46,5 +46,10 @@ OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
   :provider => 'github',
   :credentials => {
                     token: ENV['GITHUB_TOKEN']
-                  }
+                  },
+  :extra => {
+              :raw_info => {
+                              login: 'jpc20'
+                            }
+            }
 })
