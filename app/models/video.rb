@@ -4,6 +4,6 @@ class Video < ApplicationRecord
   belongs_to :tutorial
 
   def self.by_tutorial
-    joins(:tutorial).group_by{ |video| video.tutorial }
+    joins(:tutorial).order(:position).group_by{ |video| video.tutorial }
   end
 end
