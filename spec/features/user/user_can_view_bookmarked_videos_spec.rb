@@ -15,12 +15,13 @@ describe 'A registered user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
+    save_and_open_page
     within '.bookmarks' do
-      within "tutorial-#{tutorial1}" do
+      within "#tutorial-#{tutorial1.id}" do
         expect(page).to have_content(video1.title)
         expect(page).to have_content(video2.title)
       end
-      within "tutorial-#{tutorial2}" do
+      within "#tutorial-#{tutorial2.id}" do
         expect(page).to have_content(video3.title)
         expect(page).to_not have_content(video4.title)
       end

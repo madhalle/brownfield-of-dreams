@@ -7,8 +7,16 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
-    <h1>Bookmarked Segments</h1>
+  <section class="bookmarks">
+    <h1> Bookmarked Segments </h1>
+      <% current_user.videos.by_tutorial.each do |tutorial, videos| %>
+        <ul id="tutorial-<%= tutorial.id %>">
+          <h3><%= tutorial.title %></h3>
+            <% videos.each do |video| %>
+            <li><%= link_to video.title, tutorial_path(tutorial.id, video.id) %></li>
+            <% end %>
+        </ul>
+      <% end %>
   </section>
 
 
