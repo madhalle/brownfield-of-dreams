@@ -34,7 +34,7 @@
       <section class="followers">
         <% @followers.each do |follower| %>
           <p class="follower" id="follower-<%= follower.login %>">
-            <%= link_to follower.login, follower.link %> <%= link_to "Add Friend", "/friendships/#{follower.user_id}", method: :post if follower.has_account? && !@friends.include?(follower.login) %>
+            <%= link_to follower.login, follower.link %> <%= link_to "Add Friend", "/friendships/#{follower.user_id}", method: :post if follower.account? && !@friends.include?(follower.login) %>
           </p>
         <% end %>
       </section>
@@ -43,7 +43,7 @@
       <section class="followings">
         <% @followings.each do |following| %>
           <p class="following" id="following-<%= following.login %>">
-            <%= link_to following.login, following.link %> <%= link_to "Add Friend", "/friendships/#{following.user_id}", method: :post if following.has_account? && !@friends.include?(following.login) %>
+            <%= link_to following.login, following.link %> <%= link_to "Add Friend", "/friendships/#{following.user_id}", method: :post if following.account? && !@friends.include?(following.login) %>
           </p>
         <% end %>
       </section>

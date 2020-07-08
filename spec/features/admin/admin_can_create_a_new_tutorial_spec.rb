@@ -11,8 +11,7 @@ describe "Admin can create a tutorial" do
     fill_in 'tutorial[description]', with: 'New Tutorial Description'
     fill_in 'tutorial[thumbnail]', with: 'https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg'
     click_on 'Save'
-    new_tutorial = Tutorial.last
-    expect(current_path).to eq(tutorial_path(new_tutorial.id))
+    expect(current_path).to eq(admin_dashboard_path)
     expect(page).to have_content("Successfully created tutorial")
   end
 
