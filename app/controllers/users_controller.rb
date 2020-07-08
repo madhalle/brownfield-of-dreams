@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     # require "pry"; binding.pry
     recipient = current_user.email
     email_info = { message: "Visit here to activate your account.",
-                    account_holder: current_user.first_name}
+                    account_holder: current_user}
 
     ValidationMailer.inform(email_info, recipient).deliver_now
     # flash[:notice2] = "This account has not yet been activated. Please check your email."
