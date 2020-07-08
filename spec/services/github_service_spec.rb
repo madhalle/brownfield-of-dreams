@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe GithubService do
+describe GithubService, :vcr do
   context 'instance methods' do
     context '#repos' do
       it "returns repo hashes" do

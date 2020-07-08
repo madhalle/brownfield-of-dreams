@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "An admin can import a youtube playlist" do
+describe "An admin can import a youtube playlist", :vcr do
 
   before :each do
     @admin = create(:admin)

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "when visiting the site as a user" do
+RSpec.describe "when visiting the site as a user", :vcr do
   before :each do
     @user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)

@@ -1,0 +1,118 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://127.0.0.1:9515/session/48c96ce258a7c8cf00f799dcb2a9549f/url
+    body:
+      encoding: UTF-8
+      string: '{"url":"http://127.0.0.1:50295/register"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json; charset=UTF-8
+      User-Agent:
+      - selenium/3.142.7 (ruby macosx)
+      Content-Length:
+      - '41'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '14'
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: '{"value":null}'
+    http_version: null
+  recorded_at: Wed, 08 Jul 2020 02:21:40 GMT
+- request:
+    method: post
+    uri: http://127.0.0.1:9515/session/48c96ce258a7c8cf00f799dcb2a9549f/elements
+    body:
+      encoding: UTF-8
+      string: '{"using":"xpath","value":"./descendant::*[self::input | self::textarea][not(((((((./@type
+        = ''submit'') or (./@type = ''image'')) or (./@type = ''radio'')) or (./@type
+        = ''checkbox'')) or (./@type = ''hidden'')) or (./@type = ''file'')))][((((./@id
+        = ''user[email]'') or (./@name = ''user[email]'')) or (./@placeholder = ''user[email]''))
+        or (./@id = //label[(normalize-space(string(.)) = ''user[email]'')]/@for))]
+        | .//label[(normalize-space(string(.)) = ''user[email]'')]//./descendant::*[self::input
+        | self::textarea][not(((((((./@type = ''submit'') or (./@type = ''image''))
+        or (./@type = ''radio'')) or (./@type = ''checkbox'')) or (./@type = ''hidden''))
+        or (./@type = ''file'')))]"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json; charset=UTF-8
+      User-Agent:
+      - selenium/3.142.7 (ruby macosx)
+      Content-Length:
+      - '655'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '12'
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: '{"value":[]}'
+    http_version: null
+  recorded_at: Wed, 08 Jul 2020 02:21:40 GMT
+- request:
+    method: post
+    uri: http://127.0.0.1:9515/session/48c96ce258a7c8cf00f799dcb2a9549f/elements
+    body:
+      encoding: UTF-8
+      string: '{"using":"xpath","value":"./descendant::*[self::input | self::textarea][not(((((((./@type
+        = ''submit'') or (./@type = ''image'')) or (./@type = ''radio'')) or (./@type
+        = ''checkbox'')) or (./@type = ''hidden'')) or (./@type = ''file'')))][((((./@id
+        = ''user[email]'') or (./@name = ''user[email]'')) or (./@placeholder = ''user[email]''))
+        or (./@id = //label[contains(normalize-space(string(.)), ''user[email]'')]/@for))]
+        | .//label[contains(normalize-space(string(.)), ''user[email]'')]//./descendant::*[self::input
+        | self::textarea][not(((((((./@type = ''submit'') or (./@type = ''image''))
+        or (./@type = ''radio'')) or (./@type = ''checkbox'')) or (./@type = ''hidden''))
+        or (./@type = ''file'')))]"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json; charset=UTF-8
+      User-Agent:
+      - selenium/3.142.7 (ruby macosx)
+      Content-Length:
+      - '669'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '12'
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: '{"value":[]}'
+    http_version: null
+  recorded_at: Wed, 08 Jul 2020 02:21:40 GMT
+recorded_with: VCR 5.1.0
