@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def generate_validation_email
     recipient = current_user.email
-    email_info = { account_holder: current_user.first_name }
+    email_info = { account_holder: current_user }
 
     ValidationMailer.inform(email_info, recipient).deliver_now
   end
