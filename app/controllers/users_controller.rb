@@ -24,6 +24,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    current_user.update!(status:"Active")
+    require "pry"; binding.pry
+    redirect_to dashboard_path
+    flash[:notice] = "Thank you! Your account is now activated"
+  end
+
   private
 
   def user_params
@@ -32,8 +39,10 @@ class UsersController < ApplicationController
 
   def generate_validation_email
     # @email = EmailGenerator.new
+    # require "pry"; binding.pry
     recipient = current_user.email
-    email_info = { message: "Visit here to activate your account."}
+    email_info = { message: "Visit here to activate your account.",
+                    account_holder: current_user.first_name}
 
     ValidationMailer.inform(email_info, recipient).deliver_now
     # flash[:notice2] = "This account has not yet been activated. Please check your email."
