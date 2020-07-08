@@ -13,10 +13,10 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
+      redirect_to dashboard_path
       flash[:notice] = "Logged in as #{user.first_name}"
       flash[:notice2] = "This account has not yet been activated. Please check your email."
       generate_validation_email
-      redirect_to dashboard_path
     else
       flash[:error] = user.errors.full_messages.to_sentence
       @user = User.new
@@ -31,9 +31,9 @@ class UsersController < ApplicationController
   end
 
   def generate_validation_email
-    @email = EmailGenerator.new
+    # @email = EmailGenerator.new
     recipient = current_user.email
-    email_info = { message: "Visit here to activate your account.",}
+    email_info = { message: "Visit here to activate your account."}
 
     ValidationMailer.inform(email_info, recipient).deliver_now
     # flash[:notice2] = "This account has not yet been activated. Please check your email."

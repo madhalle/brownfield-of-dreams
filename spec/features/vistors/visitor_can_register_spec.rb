@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'vister can create an account', :js do
   it ' visits the home page' do
-    email = 'jimbob@aol.com'
+    email = 'mad.halle@icloud.com'
     first_name = 'Jim'
     last_name = 'Bob'
     password = 'password'
