@@ -25,7 +25,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update!(status:"Active")
+    user = User.find(params[:id])
+    session[:user_id] = user.id
+    user.update!(status:"Active")
     # require "pry"; binding.pry
     redirect_to dashboard_path
     flash[:notice] = "Thank you! Your account is now activated"

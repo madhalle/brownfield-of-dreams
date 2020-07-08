@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
-  get '/users/update', to: 'users#update'
+  get '/users/:id/update', to: 'users#update'
   # Is this being used?
   get '/video', to: 'video#show'
 

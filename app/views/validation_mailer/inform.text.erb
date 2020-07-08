@@ -1,2 +1,2 @@
 Hello <%=@user%>!
-<p>Click <%= link_to "here", root_path + "/users/update", method: :post %> to validate your account</p>
+<p>Click <%= link_to "here", root_path + "/users/#{current_user.id}/update", method: :post %> to validate your account</p>
