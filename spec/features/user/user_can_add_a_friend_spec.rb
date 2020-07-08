@@ -7,7 +7,7 @@
 # In this case Dione would have an Add as Friend link next to her name. Mike would not have the link next to his name.
 require 'rails_helper'
 
-RSpec.describe "When visiting the user dashboard" do
+RSpec.describe "When visiting the user dashboard", :vcr do
   before :each do
     @user1 = create(:user, token: ENV['GITHUB_TOKEN'], github_username: 'jpc20')
     @user2 = create(:user, token: ENV['GITHUB_TOKEN_2'], github_username: 'madhalle')
@@ -59,6 +59,9 @@ RSpec.describe "When visiting the user dashboard" do
     expect(page).to have_content('Friend Added')
     within '.friends' do
       expect(page).to have_content(@user1.github_username)
+    end
+    within "#following-#{@user1.github_username}" do
+      expect(page).to_not have_content "Add Friend"
     end
   end
 end

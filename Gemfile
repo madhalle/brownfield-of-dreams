@@ -28,6 +28,12 @@ gem 'will_paginate'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 
+# gem 'bootstrap-tooltip-rails'
+
+group :test do
+  gem 'webmock'
+  gem 'vcr'
+end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -42,6 +48,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'orderly'
 end
 
 group :development do

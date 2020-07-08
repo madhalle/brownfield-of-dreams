@@ -5,7 +5,11 @@ class Follower
     @link = follower_data[:html_url]
   end
 
-  def has_account?
+  def account?
     User.where('github_username = ?', login).exists?
+  end
+
+  def user_id
+    User.where('github_username = ?', login).pluck(:id).first
   end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'vister can create an account', :js do
+describe 'vister can create an account', :vcr do
   it ' visits the home page' do
     email = 'mad.halle@icloud.com'
     first_name = 'Jim'

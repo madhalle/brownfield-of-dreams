@@ -4,17 +4,14 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    tutorial = Tutorial.create(create_tutorial_params)
-    if tutorial.save && !create_tutorial_params[:playlist_id].empty?
-      YoutubeResults.new.create_videos(tutorial)
-      flash[:notice] = "Successfully created tutorial. #{view_context.link_to("View it here.", tutorial_path(tutorial.id))}"
+    @tutorial = Tutorial.create(create_tutorial_params)
+    if @tutorial.save
+      YoutubeResults.new.create_videos(@tutorial) unless create_tutorial_params[:playlist_id].empty?
+      flash[:success] = "Successfully created tutorial.
+      #{view_context.link_to('View it here.', tutorial_path(@tutorial.id))}"
       redirect_to admin_dashboard_path
-    elsif tutorial.save
-      flash[:notice] = "Successfully created tutorial."
-      redirect_to tutorial_path(tutorial.id)
     else
-      flash[:error] = tutorial.errors.full_messages.to_sentence
-      @tutorial = Tutorial.new
+      flash[:error] = @tutorial.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -44,5 +41,4 @@ class Admin::TutorialsController < Admin::BaseController
   def create_tutorial_params
     params.require(:tutorial).permit(:title, :description, :thumbnail, :playlist_id)
   end
-
 end

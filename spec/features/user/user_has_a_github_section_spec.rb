@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'A registered user' do
+describe 'A registered user', :vcr do
   before :each do
     @user = create(:user, token: ENV["GITHUB_TOKEN"])
 
@@ -37,18 +37,18 @@ describe 'A registered user' do
     end
   end
 
-  xit "can see all github followers " do
+  it "can see all github followers " do
     user_2 = create(:user, token: ENV["GITHUB_TOKEN_2"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
     visit(dashboard_path)
 
     within(".followers") do
-      expect(page).to have_css(".follower", count: 4)
+      expect(page).to have_css(".follower", count: 8)
       expect(page).to_not have_content("jpc20")
     end
   end
 
-  xit "can see all github followings" do
+  it "can see all github followings" do
     user_2 = create(:user, token: ENV["GITHUB_TOKEN_2"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
     visit(dashboard_path)

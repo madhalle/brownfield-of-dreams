@@ -5,7 +5,7 @@ class Following
     @link = following_data[:html_url]
   end
 
-  def has_account?
+  def account?
     User.where('github_username = ?', login).exists?
   end
 

@@ -10,8 +10,16 @@
           <li> Status: <%= current_user.status %> </li>
         <% end %>
   </ul>
-  <section>
-    <h1>Bookmarked Segments</h1>
+  <section class="bookmarks">
+    <h1> Bookmarked Segments </h1>
+      <% current_user.videos.by_tutorial.each do |tutorial, videos| %>
+        <ul id="tutorial-<%= tutorial.id %>">
+          <h3><%= tutorial.title %></h3>
+            <% videos.each do |video| %>
+            <li><%= link_to video.title, tutorial_path(tutorial.id, video.id) %></li>
+            <% end %>
+        </ul>
+      <% end %>
   </section>
 
 
@@ -29,7 +37,7 @@
       <section class="followers">
         <% @followers.each do |follower| %>
           <p class="follower" id="follower-<%= follower.login %>">
-            <%= link_to follower.login, follower.link %> <%= link_to "Add Friend" if follower.has_account? %>
+            <%= link_to follower.login, follower.link %> <%= link_to "Add Friend", "/friendships/#{follower.user_id}", method: :post if follower.account? && !@friends.include?(follower.login) %>
           </p>
         <% end %>
       </section>
@@ -38,7 +46,7 @@
       <section class="followings">
         <% @followings.each do |following| %>
           <p class="following" id="following-<%= following.login %>">
-            <%= link_to following.login, following.link %> <%= link_to "Add Friend", "/friendships/#{following.user_id}", method: :post if following.has_account? %>
+            <%= link_to following.login, following.link %> <%= link_to "Add Friend", "/friendships/#{following.user_id}", method: :post if following.account? && !@friends.include?(following.login) %>
           </p>
         <% end %>
       </section>
@@ -46,8 +54,8 @@
       <section class="friends">
         <h2>Friends</h2>
         <ul>
-          <% current_user.friendships.each do |friendship| %>
-            <li><%= friendship.friend.github_username %></li>
+          <% @friends.each do |friend| %>
+            <li><%= friend %></li>
           <% end %>
         </ul>
       </section>

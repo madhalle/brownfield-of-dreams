@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @repos = GithubResults.new.repos(current_user.token) if current_user.token
     @followers = GithubResults.new.followers(current_user.token) if current_user.token
     @followings = GithubResults.new.followings(current_user.token) if current_user.token
+    @friends = current_user.friendships.map { |friendship| friendship.friend.github_username }
   end
 
   def new
@@ -24,15 +25,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # def update
-  #   user = User.find(params[:id])
-  #   session[:user_id] = user.id
-  #   user.update!(status:"Active")
-  #   # require "pry"; binding.pry
-  #   redirect_to dashboard_path
-  #   flash[:notice] = "Thank you! Your account is now activated"
-  # end
-
   private
 
   def user_params
@@ -40,13 +32,9 @@ class UsersController < ApplicationController
   end
 
   def generate_validation_email
-    # @email = EmailGenerator.new
-    # require "pry"; binding.pry
     recipient = current_user.email
-    email_info = { message: "Visit here to activate your account.",
-                    account_holder: current_user}
+    email_info = { account_holder: current_user }
 
     ValidationMailer.inform(email_info, recipient).deliver_now
-    # flash[:notice2] = "This account has not yet been activated. Please check your email."
   end
 end

@@ -23,13 +23,14 @@ class YoutubeService
         video_id: video[:id],
         title: video[:snippet][:title],
         thumbnail: video[:snippet][:thumbnails][:high][:url],
-        description: video[:snippet][:description]
+        description: video[:snippet][:description],
+        position: video[:snippet][:position]
       }
     end
   end
 
-  def playlist_info(id, nextPageToken=nil)
-    params = { part: 'snippet,contentDetails', playlistId: id, maxResults: 100, pageToken: nextPageToken }
+  def playlist_info(id, next_page_token = nil)
+    params = { part: 'snippet,contentDetails', playlistId: id, maxResults: 100, pageToken: next_page_token }
 
     get_json('youtube/v3/playlistItems', params)
   end
