@@ -23,7 +23,8 @@ class YoutubeService
         video_id: video[:id],
         title: video[:snippet][:title],
         thumbnail: video[:snippet][:thumbnails][:high][:url],
-        description: video[:snippet][:description]
+        description: video[:snippet][:description],
+        position: video[:snippet][:position]
       }
     end
   end
