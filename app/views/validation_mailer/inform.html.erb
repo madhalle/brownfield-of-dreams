@@ -1,2 +1,2 @@
-<h2>Hello <%=@user%>!</h2>
-<p>Click <%= link_to "here", "/users/update", method: :post %> to validate your account</p>
+<h2>Hello <%=@user.first_name%>!</h2>
+<p>Click <%= link_to "here", authentication_url(@user.id)%> to validate your account</p>

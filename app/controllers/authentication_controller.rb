@@ -5,4 +5,15 @@ class AuthenticationController < ApplicationController
     current_user.update(github_username: auth['extra']['raw_info']['login'])
     redirect_to dashboard_path
   end
+
+  def show
+    user = User.find(params[:id])
+    session[:user_id] = user.id
+    user.update!(status:"Active")
+    # require "pry"; binding.pry
+    # redirect_to dashboard_path
+    # flash[:notice] = "Thank you! Your account is now activated"
+  end
+
+
 end
