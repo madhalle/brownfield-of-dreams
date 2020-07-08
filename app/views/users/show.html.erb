@@ -5,7 +5,10 @@
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
+    <li> <%= current_user.email%></li>
+        <% if current_user.status == 'Active' %>
+          <li> Status: <%= current_user.status %> </li>
+        <% end %>
   </ul>
   <section class="bookmarks">
     <h1> Bookmarked Segments </h1>
