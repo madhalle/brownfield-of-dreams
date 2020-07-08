@@ -8,6 +8,6 @@ RSpec.describe Tutorial, type: :model do
   end
 
   describe 'relationships' do
-    it { should have_many(:videos)}
+    it { should have_many(:videos).dependent(:destroy) }
   end
 end
