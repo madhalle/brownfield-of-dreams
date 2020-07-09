@@ -21,4 +21,3 @@ class GithubResults
     }
   end
 end
-#refactor githubservice calls, instance variable

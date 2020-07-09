@@ -5,4 +5,8 @@ class Tutorial < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :thumbnail, presence: true
+
+  def self.hide_classroom_content
+    Tutorial.where(classroom: false)
+  end
 end
