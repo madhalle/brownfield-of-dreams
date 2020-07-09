@@ -7,7 +7,7 @@ class InviteController < ApplicationController
     email = results[:email]
     if email.nil?
       flash[:notice] = "The Github user you selected doesn't have an email address associated with their account."
-      redirect_to root_path
+      redirect_to root_path and return
     end
     ValidationMailer.invite(name, email, current_user.github_username).deliver_now
     redirect_to root_path
