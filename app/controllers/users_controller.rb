@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       flash[:notice] = "Logged in as #{user.first_name}"
-      flash[:notice2] = "This account has not yet been activated. Please check your email."
+      flash[:notice2] = 'This account has not yet been activated. Please check your email.'
       generate_validation_email
       redirect_to dashboard_path
     else
