@@ -36,10 +36,13 @@ Rails.application.routes.draw do
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
-  # get '/authentication/:id', to: 'authentication#show'
-  # patch '/users/:id/update', to: 'users#update'
-  # Is this being used?
+  # get '/invites', to: 'invites#new'
+
   get '/video', to: 'video#show'
+
+  get '/invite', to: 'invite#new'
+  post '/invite', to: 'invite#create'
+  # resources :invite, only: [:create, :update]
   resources :authentication, only: [:create, :show]
   resources :users, only: [:new, :create, :update, :edit]
 

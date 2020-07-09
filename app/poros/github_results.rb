@@ -13,5 +13,12 @@ class GithubResults
     json = GithubService.new.followings(token)
     json.map { |following_data| Following.new(following_data) }
   end
+
+  def user_email(username)
+    json = GithubService.new.get_email(username)
+    { :email => json[:email],
+      :name => json[:name]
+    }
+  end
 end
 #refactor githubservice calls, instance variable
