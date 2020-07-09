@@ -21,5 +21,19 @@ describe "An Admin can edit a tutorial", :vcr do
     within(first(".video")) do
       expect(page).to have_content("How to tie your shoes.")
     end
+
+  end
+  scenario "all required fields must be filled out" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit edit_admin_tutorial_path(tutorial)
+
+    click_on "Add Video"
+
+    fill_in "video[description]", with: "Over, under, around and through, Meet Mr. Bunny Rabbit, pull and through."
+    click_on "Create Video"
+
+    expect(current_path).to eq(edit_admin_tutorial_path(tutorial))
+    expect(page).to have_content('Please fill in all required fields.')
   end
 end

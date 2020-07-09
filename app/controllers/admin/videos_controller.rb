@@ -23,8 +23,8 @@ class Admin::VideosController < Admin::BaseController
       video.save
 
       flash[:success] = 'Successfully created video.'
-    rescue StandardError => e
-      flash[:error] = e.to_s
+    rescue StandardError
+      flash[:error] = 'Please fill in all required fields.'
     end
 
     redirect_to edit_admin_tutorial_path(id: tutorial.id)
