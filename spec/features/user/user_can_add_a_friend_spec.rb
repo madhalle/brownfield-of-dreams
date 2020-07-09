@@ -32,7 +32,7 @@ RSpec.describe "When visiting the user dashboard", :vcr do
       expect(page).to_not have_content('Add Friend')
     end
     within "#follower-#{@user2.github_username}" do
-      click_link "Add Friend"
+      click_button 'Add Friend'
     end
   end
 
@@ -43,7 +43,7 @@ RSpec.describe "When visiting the user dashboard", :vcr do
       expect(page).to_not have_content('Add Friend')
     end
     within "#following-#{@user1.github_username}" do
-      click_link "Add Friend"
+      click_on "Add Friend"
     end
   end
 
@@ -54,7 +54,7 @@ RSpec.describe "When visiting the user dashboard", :vcr do
       expect(page).to_not have_content(@user1.github_username)
     end
     within "#following-#{@user1.github_username}" do
-      click_link "Add Friend"
+      click_button "Add Friend"
     end
     expect(page).to have_content('Friend Added')
     within '.friends' do
