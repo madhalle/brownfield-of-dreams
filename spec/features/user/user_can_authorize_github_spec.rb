@@ -14,4 +14,8 @@ RSpec.describe "when visiting the site as a user", :vcr do
     expect(page).to have_css('.github')
     expect(page).to_not have_link('Connect to Github')
   end
+
+  it "can update the users status" do
+    visit authentication_path(@user.id)
+  end
 end

@@ -9,11 +9,6 @@ class AuthenticationController < ApplicationController
   def show
     user = User.find(params[:id])
     session[:user_id] = user.id
-    user.update!(status:"Active")
-    # require "pry"; binding.pry
-    # redirect_to dashboard_path
-    # flash[:notice] = "Thank you! Your account is now activated"
+    user.update!(status: 'Active')
   end
-
-
 end

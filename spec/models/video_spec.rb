@@ -24,7 +24,8 @@ RSpec.describe Video do
       UserVideo.create(user_id: user.id, video_id: video1.id)
       UserVideo.create(user_id: user.id, video_id: video2.id)
       UserVideo.create(user_id: user.id, video_id: video3.id)
-      expect(user.videos.by_tutorial[tutorial1]).to eq([video1, video2])
+      (user.videos.by_tutorial[tutorial1]).should include(video1)
+      (user.videos.by_tutorial[tutorial1]).should include(video2)
       expect(user.videos.by_tutorial[tutorial2]).to eq([video3])
     end
   end
