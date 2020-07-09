@@ -15,7 +15,7 @@ class GithubService
   end
 
   def get_email(username)
-    user_email_info = user_conn(username).get()
+    user_email_info = user_conn(username).get
     JSON.parse(user_email_info.body, symbolize_names: true)
   end
 

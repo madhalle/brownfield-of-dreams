@@ -16,8 +16,9 @@ class GithubResults
 
   def user_email(username)
     json = GithubService.new.get_email(username)
-    { :email => json[:email],
-      :name => json[:name]
+    {
+      email: json[:email],
+      name: json[:name]
     }
   end
 end

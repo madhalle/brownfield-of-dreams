@@ -1,7 +1,7 @@
 class ValidationMailer < ApplicationMailer
   def inform(info, recipient)
     @user = info[:account_holder]
-    mail(to: recipient, subject: "Validate your account")
+    mail(to: recipient, subject: 'Validate your account')
   end
 
   def invite(name, email, inviter)
